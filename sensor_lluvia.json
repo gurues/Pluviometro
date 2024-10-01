@@ -14,7 +14,7 @@
         "type": "function",
         "z": "ID_MODIFICADO_2",
         "name": "",
-        "func": "var lluvia_meter_total = parseFloat(flow.get(\"lluvia_meter_total\")||0);\nmsg.payload = (lluvia_meter_total + 0.008).toFixed(3); \nreturn msg;",
+        "func": "var lluvia_meter_total = parseFloat(flow.get(\"lluvia_meter_total\")||0);\nmsg.payload = (lluvia_meter_total + 0.3).toFixed(3); \nreturn msg;",
         "outputs": 1,
         "x": 420,
         "y": 360,
