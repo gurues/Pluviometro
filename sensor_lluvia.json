@@ -1,0 +1,139 @@
+[
+    {
+        "id": "ID_MODIFICADO_1",
+        "type": "comment",
+        "z": "ID_MODIFICADO_2",
+        "name": "Contador de Precipitación (Lluvia)",
+        "info": "",
+        "x": 280,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "ID_MODIFICADO_3",
+        "type": "function",
+        "z": "ID_MODIFICADO_2",
+        "name": "",
+        "func": "var lluvia_meter_total = parseFloat(flow.get(\"lluvia_meter_total\")||0);\nmsg.payload = (lluvia_meter_total + 0.008).toFixed(3); \nreturn msg;",
+        "outputs": 1,
+        "x": 420,
+        "y": 360,
+        "wires": [
+            [
+                "ID_MODIFICADO_4"
+            ]
+        ]
+    },
+    {
+        "id": "ID_MODIFICADO_5",
+        "type": "inject",
+        "z": "ID_MODIFICADO_2",
+        "name": "",
+        "props": [
+            {
+                "p": "payload",
+                "v": "off",
+                "vt": "str"
+            },
+            {
+                "p": "topic",
+                "v": "",
+                "vt": "str"
+            }
+        ],
+        "payload": "off",
+        "payloadType": "str",
+        "x": 410,
+        "y": 320,
+        "wires": [
+            [
+                "ID_MODIFICADO_3"
+            ]
+        ]
+    },
+    {
+        "id": "ID_MODIFICADO_6",
+        "type": "trigger-state",
+        "z": "ID_MODIFICADO_2",
+        "name": "zb_pluviometro",
+        "version": 4,
+        "inputs": 1,
+        "outputs": 2,
+        "exposeAsEntityConfig": "",
+        "stateType": "str",
+        "enableInput": true,
+        "x": 220,
+        "y": 360,
+        "wires": [
+            [
+                "ID_MODIFICADO_3"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "ID_MODIFICADO_7",
+        "type": "change",
+        "z": "ID_MODIFICADO_2",
+        "name": "lluvia_meter_total",
+        "rules": [
+            {
+                "t": "set",
+                "p": "lluvia_meter_total",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "lluvia_meter_total",
+                "tot": "flow"
+            }
+        ],
+        "x": 790,
+        "y": 360,
+        "wires": [
+            [
+                "ID_MODIFICADO_8"
+            ]
+        ]
+    },
+    {
+        "id": "ID_MODIFICADO_4",
+        "type": "ha-sensor",
+        "z": "ID_MODIFICADO_2",
+        "name": "Lluvia meter",
+        "entityConfig": "ID_MODIFICADO_9",
+        "version": 0,
+        "state": "payload",
+        "stateType": "msg",
+        "attributes": [],
+        "inputOverride": "allow",
+        "outputProperties": [],
+        "x": 590,
+        "y": 360,
+        "wires": [
+            [
+                "ID_MODIFICADO_7"
+            ]
+        ]
+    },
+    {
+        "id": "ID_MODIFICADO_8",
+        "type": "debug",
+        "z": "ID_MODIFICADO_2",
+        "name": "debug 184",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 990,
+        "y": 360,
+        "wires": []
+    }
+]

@@ -1,0 +1,30 @@
+# Consumos horarios
+###################
+precipitacion_horaria:
+  name: Precipitación horaria
+  source: sensor.lluvia_meter
+  cycle: hourly 
+# Consumos diarios
+##################
+precipitacion_diaria:
+  name: Precipitación diaria
+  source: sensor.lluvia_meter
+  cycle: daily 
+# Consumos Semanales
+####################
+precipitacion_semanal:
+  name: Precipitación semanal
+  source: sensor.lluvia_meter
+  cycle: weekly
+# Consumos Mensuales
+####################
+precipitacion_mensual:
+  name: Precipitación mensual
+  source: sensor.lluvia_meter
+  cycle: monthly
+# Consumos Anuales
+##################
+precipitacion_anual:
+  name: Precipitación anual
+  source: sensor.lluvia_meter
+  cycle: yearly
